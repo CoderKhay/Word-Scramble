@@ -3,6 +3,7 @@
 This is a game which involves the scattering of meaningful words and giving of tips to help players reach the original word.
 
 ##WHAT I LEARNT
+
 -It was definitely fun building this project,and i learnt an algorithm known as Fisher yates or Knull shuffle
 The algorithm ensures a uniformly random shuffle in O(n) time.
 Here is the syntax below
@@ -18,9 +19,11 @@ const j = Math.floor(Math.random()\*(i+1))
 
 const arr = [1,2,3,4,5]
 ````
+This project wasn't built sticking entirely to the challenge resource, I added my own touch to it and improvised where necessary.
 
 ##TECHNOLOGIES USED
 -HTML5
 -Vanilla Css
 -pure javascript
+
 
