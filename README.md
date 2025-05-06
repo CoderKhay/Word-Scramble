@@ -1,4 +1,4 @@
-# Word-Sramble
+# Word-Scramble
 
 This is a game which involves the scattering of meaningful words and giving of tips to help players reach the original word.
 
