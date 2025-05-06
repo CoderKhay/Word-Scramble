@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="scramble.css" />
+    <title>Word Scramble game</title>
+  </head>
+  <body>
+    <section id="message" class="message"></section>
+    <div id="instructionContainer" class="instructionContainer">
+      <button id="cancel" class="cancel">X</button>
+      <div id="instruction" class="instruction">
+        <h4>INSTRUCTION</h4>
+        <h5>
+          The first game is loaded automatically, so all you have to do is click
+          the input space and guess the correct form of the word in the grey
+          area. However,after each game there's a need to click the random
+          button to generate new shuffled words because if you don't, the
+          inputfield will remain disabled.
+        </h5>
+      </div>
+    </div>
+
+    <div class="container" id="container">
+      <h3 class="title" id="title">Word Scramble</h3>
+      <div class="randomDisplay" id="randomDisplay"></div>
+      <div id="userEffort" class="userEffort">
+        <div id="tries" class="tries">
+          Tries:<span id="timesTried">0</span>/5
+        </div>
+        <div id="tips" class="tips">
+          <h5></h5>
+        </div>
+      </div>
+      <div id="userInput" class="userInput">
+        <input type="text" id="userGuess" />
+      </div>
+
+      <div id="btnContainer" class="btnContainer">
+        <button type="button" id="btn3" class="btn3">Check</button>
+        <button type="button" id="btn1" class="btn1">Random</button>
+        <button type="reset" id="btn2" class="btn2">Reset</button>
+      </div>
+    </div>
+    <button class="displayInfo" id="displayInfo">Instruction</button>
+
+    <script src="scramble.js"></script>
+  </body>
+</html>
