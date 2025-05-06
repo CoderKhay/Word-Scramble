@@ -22,8 +22,12 @@ const arr = [1,2,3,4,5]
 This project wasn't built sticking entirely to the challenge resource, I added my own touch to it and improvised where necessary.
 
 ##TECHNOLOGIES USED
+
+
 -HTML5
--Vanilla Css
--pure javascript
+
+-Vanilla Css5
+
+-javascript
 
 
