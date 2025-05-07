@@ -24,11 +24,11 @@ This project wasn't built sticking entirely to the challenge resource, I added m
 ##TECHNOLOGIES USED
 
 
--HTML5
+- HTML5
 
--Vanilla Css5
+- Vanilla Css5
 
--javascript
+- javascript
 
 Below is the live url to the web app
 - word-scramble-game-roan.vercel.app
