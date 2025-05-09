@@ -29,5 +29,5 @@ const arr = [1,2,3,4,5]
 - javascript
 
 Below is the live url to the web app
-- word-scramble-game-c3pmyh7k6-tempestcoders-projects.vercel.app
+https://tempest-word-scramble-game.netlify.app/
 
