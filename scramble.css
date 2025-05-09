@@ -275,6 +275,45 @@ div.tips {
     box-shadow: 1px 1px 1px 1px rgb(236, 68, 236);
     display: none;
   }
+
+  .btn1 {
+    display: none;
+    background-color: rgb(236, 68, 236);
+    width: 80px;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+    box-shadow: 0px 2px rgb(148, 30, 148);
+  }
+
+  .btn2 {
+    background-color: rgb(236, 68, 236);
+    width: 70px;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+    box-shadow: 0px 2px rgb(148, 30, 148);
+  }
+
+  .btn3 {
+    display: block;
+    background-color: rgb(236, 68, 236);
+    width: 80px;
+    height: 28px;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    padding: 5px;
+    box-shadow: 0px 2px rgb(148, 30, 148);
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -357,12 +396,51 @@ div.tips {
     box-shadow: 1px 1px 1px 1px rgb(236, 68, 236);
     display: none;
   }
+
+  .btn1 {
+    display: none;
+    background-color: rgb(236, 68, 236);
+    width: 80px;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+    box-shadow: 0px 2px rgb(148, 30, 148);
+  }
+
+  .btn2 {
+    background-color: rgb(236, 68, 236);
+    width: 70px;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+    box-shadow: 0px 2px rgb(148, 30, 148);
+  }
+
+  .btn3 {
+    display: block;
+    background-color: rgb(236, 68, 236);
+    width: 80px;
+    height: 28px;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    padding: 5px;
+    box-shadow: 0px 2px rgb(148, 30, 148);
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .container {
     background-color: rgb(20, 20, 39);
-    height: 40%;
+    height: 50%;
     width: 60%;
     border-radius: 8px;
     padding: 20px;
@@ -436,6 +514,45 @@ div.tips {
     margin-bottom: 10px;
     box-shadow: 1px 1px 1px 1px rgb(236, 68, 236);
     display: none;
+  }
+
+  .btn1 {
+    display: none;
+    background-color: rgb(236, 68, 236);
+    width: 80px;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+    box-shadow: 0px 2px rgb(148, 30, 148);
+  }
+
+  .btn2 {
+    background-color: rgb(236, 68, 236);
+    width: 70px;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+    box-shadow: 0px 2px rgb(148, 30, 148);
+  }
+
+  .btn3 {
+    display: block;
+    background-color: rgb(236, 68, 236);
+    width: 80px;
+    height: 28px;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    padding: 5px;
+    box-shadow: 0px 2px rgb(148, 30, 148);
   }
 
   .userEffort {

@@ -146,13 +146,22 @@ checkWordBtn.addEventListener("click", () => {
     checkWordBtn.style.transform = "scale(1)";
   }, 100);
   count.innerText++;
-  if (userInputDiv.value === actualWord) {
+  if (
+    userInputDiv.value.trim().toLowerCase() === actualWord.trim().toLowerCase()
+  ) {
     message.style.display = "block";
     message.innerText = `Weldone champ!🥳 the answer is indeed ${actualWord}`;
     userInputDiv.style.borderColor = "green";
     checkWordBtn.disabled = true;
   } else {
     failedAnswer();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    // Perform the action when the Enter key is pressed
+    checkWordBtn.click(); // Simulate a button click
   }
 });
 
@@ -164,4 +173,15 @@ infoDisplay.onclick = () => {
 };
 cancelBtn.onclick = () => {
   instruction.style.display = "none";
+};
+
+window.onclick = (event) => {
+  // Check if the clicked element is NOT cancelBtn or infoDisplay
+  if (
+    event.target !== cancelBtn &&
+    event.target !== infoDisplay &&
+    !instruction.contains(event.target) // Ensure clicks inside the instruction container are ignored
+  ) {
+    instruction.style.display = "none"; // Hide the instruction container
+  }
 };
