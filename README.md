@@ -2,7 +2,7 @@
 
 This is a game which involves the scattering of meaningful words and giving of tips to help players reach the original word.
 
-##WHAT I LEARNT
+## WHAT I LEARNT
 
 -It was definitely fun building this project,and i learnt an algorithm known as Fisher yates or Knull shuffle
 The algorithm ensures a uniformly random shuffle in O(n) time.
@@ -19,9 +19,7 @@ const j = Math.floor(Math.random()\*(i+1))
 
 const arr = [1,2,3,4,5]
 ````
-This project wasn't built sticking entirely to the challenge resource, I added my own touch to it and improvised where necessary.
-
-##TECHNOLOGIES USED
+## TECHNOLOGIES USED
 
 
 - HTML5
@@ -31,5 +29,5 @@ This project wasn't built sticking entirely to the challenge resource, I added m
 - javascript
 
 Below is the live url to the web app
-- word-scramble-game-roan.vercel.app
+https://tempest-word-scramble-game.netlify.app/
 
