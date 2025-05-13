@@ -40,7 +40,7 @@ const words = [
     tip: "A captured moment in time",
   },
   {
-    word: "pulvurise",
+    word: "pulvurize",
     tip: "Grounded to dust",
   },
   {
@@ -124,7 +124,7 @@ let guessedWord = document.getElementById("userGuess");
 let containerDiv = document.getElementById("container");
 
 function failedAnswer() {
-  /* using counter.innerText !== 5 actually opposes the command you intend to */
+  /* using counter.innerText !== 5 actually opposes the command you intended */
   if (userInputDiv.value !== actualWord && count.innerText == 5) {
     message.style.display = "block";
     message.innerText = `Sorry champ!😔 the answer is actually ${actualWord}`;
@@ -153,6 +153,17 @@ checkWordBtn.addEventListener("click", () => {
     message.innerText = `Weldone champ!🥳 the answer is indeed ${actualWord}`;
     userInputDiv.style.borderColor = "green";
     checkWordBtn.disabled = true;
+    setTimeout(() => {
+      randomBtn.style.display = "block";
+      checkWordBtn.style.display = "none";
+      userInputDiv.value = "";
+      userInputDiv.style.borderColor = "grey";
+      document.getElementById("message").style.display = "none";
+      count.innerText = 0;
+      // userInputDiv.disabled = true;
+      checkWordBtn.disabled = false;
+      randomWords();
+    }, 2000);
   } else {
     failedAnswer();
   }
