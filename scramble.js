@@ -98,6 +98,7 @@ randomBtn.onclick = () => {
     randomBtn.style.transform = "scale(1)";
     randomBtn.style.display = " none";
     checkWordBtn.style.display = "block";
+    userInputDiv.value = "";
   }, 100);
 
   userInputDiv.disabled = false;
