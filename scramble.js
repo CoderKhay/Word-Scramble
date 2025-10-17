@@ -1,3 +1,5 @@
+import confetti from "https://cdn.skypack.dev/canvas-confetti";
+
 const words = [
   {
     word: "septuagenarian",
@@ -66,11 +68,11 @@ const words = [
 ];
 
 const randomDisplay = document.getElementById("randomDisplay");
-const randomBtn = document.getElementById("btn1");
-const resetBtn = document.getElementById("btn2");
+const randomBtn = document.getElementById("randomBtn");
+const resetBtn = document.getElementById("resetBtn");
 const tipDiv = document.getElementById("tips");
 const userInputDiv = document.getElementById("userGuess");
-const checkWordBtn = document.getElementById("btn3");
+const checkWordBtn = document.getElementById("checkBtn");
 let actualWord;
 
 const randomWords = () => {
@@ -124,6 +126,9 @@ let count = document.getElementById("timesTried");
 let guessedWord = document.getElementById("userGuess");
 let containerDiv = document.getElementById("container");
 
+// Use the ESM build of canvas-confetti via a CDN so the browser can import it
+// directly. The script is loaded as type="module" in index.html.
+
 function failedAnswer() {
   /* using counter.innerText !== 5 actually opposes the command you intended */
   if (userInputDiv.value !== actualWord && count.innerText == 5) {
@@ -136,6 +141,7 @@ function failedAnswer() {
     userInputDiv.style.borderColor = "red";
     setTimeout(() => {
       message.style.display = "none";
+      guessedWord.value = "";
     }, 1000);
     checkWordBtn.disabled = false;
   }
@@ -150,6 +156,7 @@ checkWordBtn.addEventListener("click", () => {
   if (
     userInputDiv.value.trim().toLowerCase() === actualWord.trim().toLowerCase()
   ) {
+    confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
     message.style.display = "block";
     message.innerText = `Weldone champ!🥳 the answer is indeed ${actualWord}`;
     userInputDiv.style.borderColor = "green";

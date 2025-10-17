@@ -10,22 +10,21 @@
     <section id="message" class="message"></section>
     <div id="instructionContainer" class="instructionContainer">
       <button id="cancel" class="cancel">X</button>
-      <div id="instruction" class="instruction">
-        <h4>INSTRUCTION</h4>
-        <h5>
-          The first game is loaded automatically, so all you have to do is click
-          the input space and guess the correct form of the shuffled word in the
-          grey area. If you are not sure of the answer, click the 'Random'
-          button to get a new word , but this action can only be done once per
-          word. If you are sure of the answer, click the 'Check' or 'Enter'
-          button to see if your guess is correct. You have a total of 5 tries to
-          guess the word correctly. If you want to start over, click the 'Reset'
-          button. Good luck!
-        </h5>
-      </div>
+
+      <h4>INSTRUCTION</h4>
+      <p class="instruction">
+        The first game is loaded automatically, so all you have to do is click
+        the input space and guess the correct form of the shuffled word in the
+        grey area. If you are not sure of the answer, click the 'Random' button
+        to get a new word , but this action can only be done once per word. If
+        you are sure of the answer, click the 'Check' or 'Enter' button to see
+        if your guess is correct. You have a total of 5 tries to guess the word
+        correctly. If you want to start over, click the 'Reset' button.
+        <span style="color: green"> Good luck!</span>
+      </p>
     </div>
 
-    <div class="container" id="container">
+    <div class="gameContainer" id="gameContainer">
       <h3 class="title" id="title">Word Scramble</h3>
       <div class="randomDisplay" id="randomDisplay"></div>
       <div id="userEffort" class="userEffort">
@@ -41,13 +40,13 @@
       </div>
 
       <div id="btnContainer" class="btnContainer">
-        <button type="button" id="btn3" class="btn3">Check</button>
-        <button type="button" id="btn1" class="btn1">Random</button>
-        <button type="reset" id="btn2" class="btn2">Reset</button>
+        <button type="button" id="checkBtn" class="checkBtn">Check</button>
+        <button type="button" id="randomBtn" class="randomBtn">Random</button>
+        <button type="reset" id="resetBtn" class="resetBtn">Reset</button>
       </div>
     </div>
     <button class="displayInfo" id="displayInfo">Instruction</button>
 
-    <script src="scramble.js"></script>
+    <script type="module" src="scramble.js"></script>
   </body>
 </html>

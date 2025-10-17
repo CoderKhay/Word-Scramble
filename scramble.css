@@ -24,9 +24,9 @@ body {
   display: none;
   z-index: 1;
   box-shadow: 3px 3px 4px #fff;
-  height: 50%;
-  width: 40%;
-  background-color: #ffebcd;
+  width: 50%;
+  height: 60%;
+  background-color: grey;
   padding: 15px;
 }
 
@@ -42,17 +42,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.instruction > h4 {
+.instructionContainer > h4 {
   font-family: sans-serif;
-  color: crimson;
-  margin-top: 40px;
+  color: red;
+  margin-top: 28px;
 }
 
-.instruction > h5 {
-  font-style: italic;
+.instructionContainer > p {
+  font-family: serif;
   word-spacing: 3px;
-  color: rgb(109, 141, 168);
-  margin-top: 80px;
+  color: #fff;
+  margin-top: 20px;
   line-height: 20px;
 }
 
@@ -63,6 +63,7 @@ body {
   width: 20%;
   aspect-ratio: 1/0.3;
   border-radius: 7px;
+  user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,10 +87,10 @@ div.tips {
   font-style: italic;
 }
 
-.container {
+.gameContainer {
   background-color: rgb(20, 20, 39);
-  height: 50%;
-  width: 35%;
+  height: 60%;
+  width: 50%;
   border-radius: 8px;
   padding: 20px;
   display: flex;
@@ -160,7 +161,7 @@ div.tips {
   position: relative;
 }
 
-.btn1 {
+.checkBtn {
   display: none;
   background-color: rgb(236, 68, 236);
   width: 80px;
@@ -173,7 +174,7 @@ div.tips {
   box-shadow: 0px 2px rgb(148, 30, 148);
 }
 
-.btn2 {
+.randomBtn {
   background-color: rgb(236, 68, 236);
   width: 70px;
   color: #fff;
@@ -185,11 +186,10 @@ div.tips {
   box-shadow: 0px 2px rgb(148, 30, 148);
 }
 
-.btn3 {
+.resetBtn {
   display: block;
   background-color: rgb(236, 68, 236);
   width: 80px;
-  height: 28px;
   color: #fff;
   cursor: pointer;
   border: 0;
@@ -215,109 +215,8 @@ div.tips {
   box-shadow: 0px 2px rgb(148, 30, 148);
 }
 
-@media only screen and (max-width: 992px) {
-  .container {
-    background-color: rgb(20, 20, 39);
-    height: 50%;
-    width: 50%;
-    border-radius: 8px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .instruction > h4 {
-    font-family: sans-serif;
-    color: crimson;
-    margin-top: 40px;
-  }
-
-  .instruction > h5 {
-    font-style: italic;
-    word-spacing: 3px;
-    color: rgb(109, 141, 168);
-    margin-top: 40px;
-    line-height: 25px;
-  }
-
-  .instructionContainer {
-    display: none;
-    position: absolute;
-    align-items: center;
-    text-align: center;
-    box-shadow: 3px 3px 4px #fff;
-    z-index: 1;
-    height: 50%;
-    width: 50%;
-    background-color: #ffebcd;
-    padding: 15px;
-  }
-
-  .message {
-    position: absolute;
-    top: 40px;
-    background-color: #fff;
-    width: 25%;
-    aspect-ratio: 1/0.3;
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-top: 20%;
-    font-family: sans-serif;
-    font-style: italic;
-    font-size: large;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 10px;
-    margin-bottom: 10px;
-    box-shadow: 1px 1px 1px 1px rgb(236, 68, 236);
-    display: none;
-  }
-
-  .btn1 {
-    display: none;
-    background-color: rgb(236, 68, 236);
-    width: 80px;
-    color: #fff;
-    border: 0;
-    outline: 0;
-    border-radius: 3px;
-    cursor: pointer;
-    padding: 5px;
-    box-shadow: 0px 2px rgb(148, 30, 148);
-  }
-
-  .btn2 {
-    background-color: rgb(236, 68, 236);
-    width: 70px;
-    color: #fff;
-    border: 0;
-    outline: 0;
-    border-radius: 3px;
-    cursor: pointer;
-    padding: 5px;
-    box-shadow: 0px 2px rgb(148, 30, 148);
-  }
-
-  .btn3 {
-    display: block;
-    background-color: rgb(236, 68, 236);
-    width: 80px;
-    height: 28px;
-    color: #fff;
-    cursor: pointer;
-    border: 0;
-    outline: 0;
-    border-radius: 3px;
-    padding: 5px;
-    box-shadow: 0px 2px rgb(148, 30, 148);
-  }
-}
-
 @media only screen and (max-width: 768px) {
-  .container {
+  .gameContainer {
     background-color: rgb(20, 20, 39);
     height: 50%;
     width: 70%;
@@ -438,28 +337,14 @@ div.tips {
 }
 
 @media only screen and (max-width: 600px) {
-  .container {
+  .gameContainer {
     background-color: rgb(20, 20, 39);
-    height: 50%;
+    height: 60%;
     width: 60%;
     border-radius: 8px;
     padding: 20px;
     display: flex;
     flex-direction: column;
-  }
-
-  .instruction > h4 {
-    font-family: sans-serif;
-    color: crimson;
-    margin-top: 40px;
-  }
-
-  .instruction > h5 {
-    font-style: italic;
-    word-spacing: 3px;
-    color: rgb(109, 141, 168);
-    margin-top: 20px;
-    line-height: 20px;
   }
 
   .instructionContainer {
@@ -468,9 +353,9 @@ div.tips {
     text-align: center;
     box-shadow: 3px 3px 4px #fff;
     z-index: 1;
-    height: 50%;
-    width: 60%;
-    background-color: #ffebcd;
+    height: 60%;
+    aspect-ratio: 1/1;
+    background-color: grey;
     padding: 15px;
   }
 
@@ -516,7 +401,7 @@ div.tips {
     display: none;
   }
 
-  .btn1 {
+  .randomBtn {
     display: none;
     background-color: rgb(236, 68, 236);
     width: 80px;
@@ -529,7 +414,7 @@ div.tips {
     box-shadow: 0px 2px rgb(148, 30, 148);
   }
 
-  .btn2 {
+  .resetBtn {
     background-color: rgb(236, 68, 236);
     width: 70px;
     color: #fff;
@@ -541,11 +426,10 @@ div.tips {
     box-shadow: 0px 2px rgb(148, 30, 148);
   }
 
-  .btn3 {
+  .checkBtn {
     display: block;
     background-color: rgb(236, 68, 236);
     width: 80px;
-    height: 28px;
     color: #fff;
     cursor: pointer;
     border: 0;

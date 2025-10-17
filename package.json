@@ -1,0 +1,24 @@
+{
+  "name": "word-scramble",
+  "version": "1.0.0",
+  "description": "This is a game which involves the scattering of meaningful words and giving of tips to help players reach the original word.",
+  "main": "scramble.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tempestCoder/Word-Sramble.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tempestCoder/Word-Sramble/issues"
+  },
+  "homepage": "https://github.com/tempestCoder/Word-Sramble#readme",
+  "dependencies": {
+    "canvas-confetti": "^1.9.3"
+  }
+}
