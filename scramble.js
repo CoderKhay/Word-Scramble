@@ -156,7 +156,7 @@ checkWordBtn.addEventListener("click", () => {
   if (
     userInputDiv.value.trim().toLowerCase() === actualWord.trim().toLowerCase()
   ) {
-    confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+    confetti({ particleCount: 500, spread: 100, origin: { y: 0.6 } });
     message.style.display = "block";
     message.innerText = `Weldone champ!🥳 the answer is indeed ${actualWord}`;
     userInputDiv.style.borderColor = "green";
