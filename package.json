@@ -4,6 +4,9 @@
   "description": "This is a game which involves the scattering of meaningful words and giving of tips to help players reach the original word.",
   "main": "scramble.js",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +22,11 @@
   },
   "homepage": "https://github.com/tempestCoder/Word-Sramble#readme",
   "dependencies": {
-    "canvas-confetti": "^1.9.3"
+    "canvas-confetti": "^1.9.3",
+    "vite": "^7.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.17",
+    "tailwindcss": "^4.1.17"
   }
 }

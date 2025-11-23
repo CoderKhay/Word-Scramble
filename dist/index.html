@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Scramble game</title>
+    <script type="module" crossorigin src="/assets/index-DeS0ogt6.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DlJjNUnS.css">
+  </head>
+  <body>
+    <section id="message" class="message"></section>
+    <div id="instructionContainer" class="instructionContainer">
+      <button id="cancel" class="cancel">X</button>
+
+      <h4 class="text-red-500">INSTRUCTION</h4>
+      <p class="instruction">
+        The first game is loaded automatically, so all you have to do is click
+        the input space and guess the correct form of the shuffled word in the
+        grey area. If you are not sure of the answer, click the 'Random' button
+        to get a new word , but this action can only be done once per word. If
+        you are sure of the answer, click the 'Check' or 'Enter' button to see
+        if your guess is correct. You have a total of 5 tries to guess the word
+        correctly. If you want to start over, click the 'Reset' button.
+        <span style="color: green"> Good luck!</span>
+      </p>
+    </div>
+
+    <div class="gameContainer" id="gameContainer">
+      <h3 class="title" id="title">Word Scramble</h3>
+      <div class="randomDisplay" id="randomDisplay"></div>
+      <div id="userEffort" class="userEffort">
+        <div id="tries" class="tries">
+          Tries:<span id="timesTried">0</span>/5
+        </div>
+        <div id="tips" class="tips">
+          <h5></h5>
+        </div>
+      </div>
+      <div id="userInput" class="userInput">
+        <input type="text" id="userGuess" />
+      </div>
+
+      <div id="btnContainer" class="btnContainer">
+        <button type="button" id="checkBtn" class="checkBtn">Check</button>
+        <button type="button" id="randomBtn" class="randomBtn">Random</button>
+        <button type="reset" id="resetBtn" class="resetBtn">Reset</button>
+      </div>
+    </div>
+    <button class="displayInfo" id="displayInfo">Instruction</button>
+
+  </body>
+</html>
