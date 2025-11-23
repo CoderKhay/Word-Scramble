@@ -17,8 +17,8 @@ This is a browser game that shuffles words and challenges the player to guess th
 ## Tech
 
 - HTML5
-- CSS3
-- Vanilla JavaScript
+- tailwindcss
+- typescript
 
 ## Notes about the confetti import
 
