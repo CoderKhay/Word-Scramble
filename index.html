@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="./src/style.css" />
     <title>Word Scramble game</title>
   </head>
-  <body>
+  <body class="bg-[#6B4EFF] flex flex-col justify-center items-center h-screen">
     <section id="message" class="message"></section>
-    <div id="instructionContainer" class="instructionContainer">
+    <!--  <div id="instructionContainer" class="instructionContainer">
       <button id="cancel" class="cancel">X</button>
 
       <h4 class="text-red-500">INSTRUCTION</h4>
@@ -23,30 +23,58 @@
         <span style="color: green"> Good luck!</span>
       </p>
     </div>
+ -->
 
-    <div class="gameContainer" id="gameContainer">
-      <h3 class="title" id="title">Word Scramble</h3>
-      <div class="randomDisplay" id="randomDisplay"></div>
-      <div id="userEffort" class="userEffort">
-        <div id="tries" class="tries">
+    <div
+      class="gameContainer bg-[rgba(20,20,30,0.75)] backdrop-blur-md p-6 w-[60%] h-[60%] rounded-md flex flex-col gap-6 shadow-2xl shadow-black"
+      id="gameContainer"
+    >
+      <h3 class="title text-[#B9A4FF] text-center text-2xl" id="title">
+        Word Scramble
+      </h3>
+      <div
+        class="randomDisplay text-[#1A1A1A] font-semibold bg-[#F3F0FF] p-1.5 rounded-sm text-center"
+        id="randomDisplay"
+      ></div>
+      <div id="userEffort" class="userEffort flex gap-10">
+        <div id="tries" class="tries text-white text-xs">
           Tries:<span id="timesTried">0</span>/5
         </div>
-        <div id="tips" class="tips">
+        <div id="tips" class="tips text-[#A7F3D0] text-xs italic">
           <h5></h5>
         </div>
       </div>
-      <div id="userInput" class="userInput">
-        <input type="text" id="userGuess" />
+      <div id="userGuessInput" class="userGuessInput">
+        <input
+          type="text"
+          id="userGuess"
+          class="border-solid bg-[#F3FOFF] border-gray-400 border-2 w-full h-9 text-white text-center outline-none rounded-md mb-4"
+        />
       </div>
 
-      <div id="btnContainer" class="btnContainer">
-        <button type="button" id="checkBtn" class="checkBtn">Check</button>
-        <button type="button" id="randomBtn" class="randomBtn">Random</button>
-        <button type="reset" id="resetBtn" class="resetBtn">Reset</button>
+      <div
+        id="btnContainer"
+        class="btnContainer flex justify-between pl-5 pr-5"
+      >
+        <button
+          type="button"
+          id="checkBtn"
+          class="checkBtn bg-[#8C5CFF] hover:bg-[#A784FF] h-10 w-20 px-4 py-2 rounded-sm text-white text-center cursor-pointer"
+        >
+          Check
+        </button>
+        <button
+          type="button"
+          id="randomBtn"
+          class="randomBtn bg-[#8C5CFF] hover:bg-[#A784FF] h-10 w-20 px-4 py-2 rounded-sm text-white text-center cursor-pointer"
+        >
+          Random
+        </button>
       </div>
     </div>
     <button class="displayInfo" id="displayInfo">Instruction</button>
 
-    <script type="module" src="scramble.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="scramble.js"></script>
   </body>
 </html>

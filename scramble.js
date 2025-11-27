@@ -1,10 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const canvas_confetti_1 = __importDefault(require("https://cdn.skypack.dev/canvas-confetti"));
-const words = [
+var words = [
     {
         word: "septuagenarian",
         tip: "An individual in their seventies",
@@ -70,121 +64,122 @@ const words = [
         tip: "An expansive land surrounded by water",
     },
 ];
-const randomDisplay = document.getElementById("randomDisplay");
-const randomBtn = document.getElementById("randomBtn");
-const resetBtn = document.getElementById("resetBtn");
-const tipDiv = document.getElementById("tips");
-const userInputDiv = document.getElementById("userGuess");
-const checkWordBtn = document.getElementById("checkBtn");
-let actualWord;
-const randomWords = () => {
-    let randomObj = words[Math.floor(Math.random() * words.length)];
-    let wordArray = randomObj.word.split("");
-    let tips = randomObj.tip;
-    for (let i = wordArray.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [wordArray[i], wordArray[j]] = [wordArray[j], wordArray[i]];
+var randomDisplay = document.getElementById("randomDisplay");
+var randomBtn = document.getElementById("randomBtn");
+var tipDiv = document.getElementById("tips");
+var userInputGuess = document.getElementById("userGuess");
+var checkWordBtn = document.getElementById("checkBtn");
+var actualWord;
+var randomWords = function () {
+    var _a;
+    var randomObj = words[Math.floor(Math.random() * words.length)];
+    if (!randomObj) {
+        console.error("".concat(randomObj));
     }
-    actualWord = randomObj.word;
-    console.log(actualWord);
-    randomDisplay.innerText = wordArray.join(" ");
-    tipDiv.innerHTML = `tips:<h5>${tips}</h5>`;
+    else {
+        var wordArray = randomObj.word.split("");
+        var tips = randomObj.tip;
+        for (var i = wordArray.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            _a = [wordArray[j], wordArray[i]], wordArray[i] = _a[0], wordArray[j] = _a[1];
+        }
+        actualWord = randomObj.word;
+        console.log(actualWord);
+        randomDisplay.innerText = wordArray.join(" ");
+        tipDiv.innerHTML = "tips:<h5>".concat(tips, "</h5>");
+    }
 };
 /* I called this function so as to have access to the actualWord variable declared within it */
 randomWords();
-randomBtn.onclick = () => {
+randomBtn.onclick = function () {
     randomWords();
     randomBtn.style.transform = "scale(0.9)";
-    setTimeout(() => {
-        randomBtn.style.transform = "scale(1)";
-        randomBtn.style.display = " none";
-        checkWordBtn.style.display = "block";
-        userInputDiv.value = "";
-    }, 100);
-    userInputDiv.disabled = false;
-};
-resetBtn.onclick = () => {
-    resetBtn.style.transform = "scale(0.9)";
-    setTimeout(() => {
-        resetBtn.style.transform = "scale(1)";
-    }, 100);
-    randomBtn.style.display = "block";
-    checkWordBtn.style.display = "none";
-    userInputDiv.value = "";
-    userInputDiv.style.borderColor = "grey";
-    document.getElementById("message").style.display = "none";
-    count.innerText = 0;
-    userInputDiv.disabled = true;
+    randomBtn.style.transform = "scale(1)";
     checkWordBtn.disabled = false;
+    userInputGuess.value = "";
+    message.style.display = "none";
+    userInputGuess.disabled = false;
+    userInputGuess.style.borderColor = "gray";
 };
-let message = document.getElementById("message");
-let count = document.getElementById("timesTried");
-let guessedWord = document.getElementById("userGuess");
-let containerDiv = document.getElementById("container");
-// Use the ESM build of canvas-confetti via a CDN so the browser can import it
-// directly. The script is loaded as type="module" in index.html.
+var message = document.getElementById("message");
+var count = document.getElementById("timesTried");
+var guessedWord = document.getElementById("userGuess");
+var score = 1;
+var containerDiv = document.getElementById("container");
 function failedAnswer() {
-    /* using counter.innerText !== 5 actually opposes the command you intended */
-    if (userInputDiv.value !== actualWord && count.innerText == 5) {
+    var currentCount = 5;
+    if (userInputGuess.value !== actualWord &&
+        count.innerText !== "".concat(currentCount)) {
         message.style.display = "block";
-        message.innerText = `Sorry champ!😔 the answer is actually ${actualWord}`;
+        message.innerText = "That wrong champ, the key is always to try one more time \uD83D\uDCAA";
         checkWordBtn.disabled = true;
+        checkWordBtn.style.cursor = "not-allowed";
+        setTimeout(function () {
+            count.textContent = "".concat(score++);
+            checkWordBtn.disabled = false;
+            checkWordBtn.style.cursor = "pointer";
+            userInputGuess.value = "";
+            message.style.display = "none";
+            userInputGuess.disabled = false;
+            userInputGuess.style.borderColor = "gray";
+        }, 1000);
     }
     else {
         message.style.display = "block";
-        message.innerText = `Try again champ 💪🏻`;
-        userInputDiv.style.borderColor = "red";
-        setTimeout(() => {
+        message.innerText = "Sorry champ!\uD83D\uDE14 the answer is actually ".concat(actualWord);
+        checkWordBtn.disabled = true;
+        setTimeout(function () {
+            count.textContent = "".concat(score);
+            checkWordBtn.disabled = false;
+            userInputGuess.value = "";
             message.style.display = "none";
-            guessedWord.value = "";
-        }, 1000);
-        checkWordBtn.disabled = false;
+            userInputGuess.disabled = false;
+            userInputGuess.style.borderColor = "gray";
+        }, 5000);
     }
 }
-checkWordBtn.addEventListener("click", () => {
+checkWordBtn.addEventListener("click", function () {
     checkWordBtn.style.transform = "scale(0.9)";
-    setTimeout(() => {
+    setTimeout(function () {
         checkWordBtn.style.transform = "scale(1)";
     }, 100);
-    count.innerText++;
-    if (userInputDiv.value.trim().toLowerCase() === actualWord.trim().toLowerCase()) {
-        (0, canvas_confetti_1.default)({ particleCount: 500, spread: 100, origin: { y: 0.6 } });
+    if (userInputGuess.value.trim().toLowerCase() ===
+        actualWord.trim().toLowerCase()) {
+        confetti({ particleCount: 500, spread: 100, origin: { y: 0.6 } });
         message.style.display = "block";
-        message.innerText = `Weldone champ!🥳 the answer is indeed ${actualWord}`;
-        userInputDiv.style.borderColor = "green";
+        message.innerText = "Weldone champ!\uD83E\uDD73 the answer is indeed ".concat(actualWord);
+        userInputGuess.style.borderColor = "green";
         checkWordBtn.disabled = true;
-        setTimeout(() => {
-            randomBtn.style.display = "block";
-            checkWordBtn.style.display = "none";
-            userInputDiv.value = "";
-            userInputDiv.style.borderColor = "grey";
-            document.getElementById("message").style.display = "none";
-            count.innerText = 0;
-            // userInputDiv.disabled = true;
+        checkWordBtn.style.cursor = "not-allowed";
+        setTimeout(function () {
+            message.style.display = "none";
+            userInputGuess.style.borderColor = "gray";
+            userInputGuess.value = "";
             checkWordBtn.disabled = false;
+            checkWordBtn.style.cursor = "pointer";
             randomWords();
-        }, 2000);
+        }, 3000);
     }
     else {
         failedAnswer();
     }
 });
-document.addEventListener("keydown", (event) => {
+document.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         // Perform the action when the Enter key is pressed
         checkWordBtn.click(); // Simulate a button click
     }
 });
-const cancelBtn = document.getElementById("cancel");
-const instruction = document.getElementById("instructionContainer");
-const infoDisplay = document.getElementById("displayInfo");
-infoDisplay.onclick = () => {
+var cancelBtn = document.getElementById("cancel");
+var instruction = document.getElementById("instructionContainer");
+var infoDisplay = document.getElementById("displayInfo");
+infoDisplay.onclick = function () {
     instruction.style.display = "block";
 };
-cancelBtn.onclick = () => {
+cancelBtn.onclick = function () {
     instruction.style.display = "none";
 };
-window.onclick = (event) => {
+window.onclick = function (event) {
     // Check if the clicked element is NOT cancelBtn or infoDisplay
     if (event.target !== cancelBtn &&
         event.target !== infoDisplay &&
@@ -193,4 +188,3 @@ window.onclick = (event) => {
         instruction.style.display = "none"; // Hide the instruction container
     }
 };
-//# sourceMappingURL=scramble.js.map
