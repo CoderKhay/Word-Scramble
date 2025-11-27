@@ -113,7 +113,7 @@ let message = document.getElementById("message")!;
 let count = document.getElementById("timesTried")!;
 let guessedWord = document.getElementById("userGuess") as HTMLInputElement;
 let score = 1;
-let containerDiv = document.getElementById("container")!;
+// removed unused container element reference to avoid potential null refs
 
 function failedAnswer() {
   let currentCount = 5;

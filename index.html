@@ -8,22 +8,32 @@
   </head>
   <body class="bg-[#6B4EFF] flex flex-col justify-center items-center h-screen">
     <section id="message" class="message"></section>
-    <!--  <div id="instructionContainer" class="instructionContainer">
-      <button id="cancel" class="cancel">X</button>
+    <!--  <div
+      id="instructionContainer"
+      class="instructionContainer  fixed inset-0 z-50 flex justify-center items-center"
+    >
+      <div class="bg-white p-6 rounded shadow-lg max-w-xl mx-4 relative">
+        <button
+          id="cancel"
+          class="cancel absolute top-3 right-3 bg-gray-200 px-2 py-1 rounded"
+        >
+          X
+        </button>
 
-      <h4 class="text-red-500">INSTRUCTION</h4>
-      <p class="instruction">
-        The first game is loaded automatically, so all you have to do is click
-        the input space and guess the correct form of the shuffled word in the
-        grey area. If you are not sure of the answer, click the 'Random' button
-        to get a new word , but this action can only be done once per word. If
-        you are sure of the answer, click the 'Check' or 'Enter' button to see
-        if your guess is correct. You have a total of 5 tries to guess the word
-        correctly. If you want to start over, click the 'Reset' button.
-        <span style="color: green"> Good luck!</span>
-      </p>
-    </div>
- -->
+        <h4 class="text-red-500">INSTRUCTION</h4>
+        <p class="instruction text-sm text-gray-700">
+          The first game is loaded automatically, so all you have to do is click
+          the input space and guess the correct form of the shuffled word in the
+          grey area. If you are not sure of the answer, click the 'Random'
+          button to get a new word, but this action can only be done once per
+          word. If you are sure of the answer, click the 'Check' or 'Enter'
+          button to see if your guess is correct. You have a total of 5 tries to
+          guess the word correctly. If you want to start over, click the 'Reset'
+          button.
+          <span style="color: green">Good luck!</span>
+        </p>
+      </div>
+    </div> -->
 
     <div
       class="gameContainer bg-[rgba(20,20,30,0.75)] backdrop-blur-md p-6 w-[60%] h-[60%] rounded-md flex flex-col gap-6 shadow-2xl shadow-black"
@@ -48,7 +58,7 @@
         <input
           type="text"
           id="userGuess"
-          class="border-solid bg-[#F3FOFF] border-gray-400 border-2 w-full h-9 text-white text-center outline-none rounded-md mb-4"
+          class="border-solid bg-[#F3F0FF] border-gray-400 border-2 w-full h-9 text-black text-center outline-none rounded-md mb-4"
         />
       </div>
 
@@ -75,6 +85,6 @@
     <button class="displayInfo" id="displayInfo">Instruction</button>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-    <script src="scramble.js"></script>
+    <script type="module" src="/src/scramble.ts"></script>
   </body>
 </html>
