@@ -112,11 +112,12 @@ randomBtn.onclick = () => {
 let message = document.getElementById("message")!;
 let count = document.getElementById("timesTried")!;
 let guessedWord = document.getElementById("userGuess") as HTMLInputElement;
-let score = 1;
+let score = 0;
 // removed unused container element reference to avoid potential null refs
 
 function failedAnswer() {
   let currentCount = 5;
+  let opacityValue = 0.6;
 
   if (
     userInputGuess.value !== actualWord &&
@@ -126,27 +127,31 @@ function failedAnswer() {
     message.innerText = `That wrong champ, the key is always to try one more time 💪`;
     checkWordBtn.disabled = true;
     checkWordBtn.style.cursor = "not-allowed";
+    checkWordBtn.style.opacity = `${opacityValue}`;
+    userInputGuess.style.borderColor = "red";
     setTimeout(() => {
-      count.textContent = `${score++}`;
+      count.textContent = `${(score += 1)}`;
       checkWordBtn.disabled = false;
       checkWordBtn.style.cursor = "pointer";
       userInputGuess.value = "";
       message.style.display = "none";
       userInputGuess.disabled = false;
+      checkWordBtn.style.opacity = `${(opacityValue = 1)}`;
       userInputGuess.style.borderColor = "gray";
-    }, 1000);
+    }, 2000);
   } else {
     message.style.display = "block";
     message.innerText = `Sorry champ!😔 the answer is actually ${actualWord}`;
     checkWordBtn.disabled = true;
     setTimeout(() => {
-      count.textContent = `${score}`;
+      count.textContent = `${(score = 0)}`;
       checkWordBtn.disabled = false;
       userInputGuess.value = "";
       message.style.display = "none";
       userInputGuess.disabled = false;
       userInputGuess.style.borderColor = "gray";
-    }, 5000);
+      randomWords();
+    }, 4000);
   }
 }
 
@@ -169,6 +174,7 @@ checkWordBtn.addEventListener("click", () => {
 
     setTimeout(() => {
       message.style.display = "none";
+      count.textContent = `${(score = 0)}`;
       userInputGuess.style.borderColor = "gray";
       userInputGuess.value = "";
       checkWordBtn.disabled = false;
