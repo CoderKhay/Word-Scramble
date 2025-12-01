@@ -63,12 +63,21 @@ var words = [
         word: "continent",
         tip: "An expansive land surrounded by water",
     },
+    {
+        word: "Minatiue",
+        tip: "A minor detail",
+    },
+    {
+        word: "Abound",
+        tip: "To be available in multitude",
+    },
 ];
 var randomDisplay = document.getElementById("randomDisplay");
 var randomBtn = document.getElementById("randomBtn");
 var tipDiv = document.getElementById("tips");
 var userInputGuess = document.getElementById("userGuess");
 var checkWordBtn = document.getElementById("checkBtn");
+var instructionBtn = document.getElementById("instructionBtn");
 var actualWord;
 var randomWords = function () {
     var _a;
@@ -104,38 +113,43 @@ randomBtn.onclick = function () {
 var message = document.getElementById("message");
 var count = document.getElementById("timesTried");
 var guessedWord = document.getElementById("userGuess");
-var score = 1;
-var containerDiv = document.getElementById("container");
+var score = 0;
+// removed unused container element reference to avoid potential null refs
 function failedAnswer() {
     var currentCount = 5;
+    var opacityValue = 0.6;
     if (userInputGuess.value !== actualWord &&
         count.innerText !== "".concat(currentCount)) {
         message.style.display = "block";
         message.innerText = "That wrong champ, the key is always to try one more time \uD83D\uDCAA";
         checkWordBtn.disabled = true;
         checkWordBtn.style.cursor = "not-allowed";
+        checkWordBtn.style.opacity = "".concat(opacityValue);
+        userInputGuess.style.borderColor = "red";
         setTimeout(function () {
-            count.textContent = "".concat(score++);
+            count.textContent = "".concat((score += 1));
             checkWordBtn.disabled = false;
             checkWordBtn.style.cursor = "pointer";
             userInputGuess.value = "";
             message.style.display = "none";
             userInputGuess.disabled = false;
+            checkWordBtn.style.opacity = "".concat((opacityValue = 1));
             userInputGuess.style.borderColor = "gray";
-        }, 1000);
+        }, 2000);
     }
     else {
         message.style.display = "block";
         message.innerText = "Sorry champ!\uD83D\uDE14 the answer is actually ".concat(actualWord);
         checkWordBtn.disabled = true;
         setTimeout(function () {
-            count.textContent = "".concat(score);
+            count.textContent = "".concat((score = 0));
             checkWordBtn.disabled = false;
             userInputGuess.value = "";
             message.style.display = "none";
             userInputGuess.disabled = false;
             userInputGuess.style.borderColor = "gray";
-        }, 5000);
+            randomWords();
+        }, 4000);
     }
 }
 checkWordBtn.addEventListener("click", function () {
@@ -153,6 +167,7 @@ checkWordBtn.addEventListener("click", function () {
         checkWordBtn.style.cursor = "not-allowed";
         setTimeout(function () {
             message.style.display = "none";
+            count.textContent = "".concat((score = 0));
             userInputGuess.style.borderColor = "gray";
             userInputGuess.value = "";
             checkWordBtn.disabled = false;
@@ -173,7 +188,7 @@ document.addEventListener("keydown", function (event) {
 var cancelBtn = document.getElementById("cancel");
 var instruction = document.getElementById("instructionContainer");
 var infoDisplay = document.getElementById("displayInfo");
-infoDisplay.onclick = function () {
+instructionBtn.onclick = function () {
     instruction.style.display = "block";
 };
 cancelBtn.onclick = function () {

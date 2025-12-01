@@ -65,6 +65,14 @@ const words = [
     word: "continent",
     tip: "An expansive land surrounded by water",
   },
+  {
+    word: "Minatiue",
+    tip: "A minor detail",
+  },
+  {
+    word: "Abound",
+    tip: "To be available in multitude",
+  },
 ];
 
 const randomDisplay = document.getElementById("randomDisplay")!;
@@ -72,6 +80,9 @@ const randomBtn = document.getElementById("randomBtn")!;
 const tipDiv = document.getElementById("tips")!;
 const userInputGuess = document.getElementById("userGuess") as HTMLInputElement;
 const checkWordBtn = document.getElementById("checkBtn") as HTMLButtonElement;
+const instructionBtn = document.getElementById(
+  "instructionBtn",
+) as HTMLButtonElement;
 let actualWord: string;
 
 const randomWords = () => {
@@ -111,7 +122,6 @@ randomBtn.onclick = () => {
 
 let message = document.getElementById("message")!;
 let count = document.getElementById("timesTried")!;
-let guessedWord = document.getElementById("userGuess") as HTMLInputElement;
 let score = 0;
 // removed unused container element reference to avoid potential null refs
 
@@ -129,6 +139,8 @@ function failedAnswer() {
     checkWordBtn.style.cursor = "not-allowed";
     checkWordBtn.style.opacity = `${opacityValue}`;
     userInputGuess.style.borderColor = "red";
+          instructionBtn.style.display = 'none'
+
     setTimeout(() => {
       count.textContent = `${(score += 1)}`;
       checkWordBtn.disabled = false;
@@ -137,12 +149,15 @@ function failedAnswer() {
       message.style.display = "none";
       userInputGuess.disabled = false;
       checkWordBtn.style.opacity = `${(opacityValue = 1)}`;
+            instructionBtn.style.display = 'block'
       userInputGuess.style.borderColor = "gray";
     }, 2000);
   } else {
     message.style.display = "block";
+
     message.innerText = `Sorry champ!😔 the answer is actually ${actualWord}`;
     checkWordBtn.disabled = true;
+          instructionBtn.style.display = 'none'
     setTimeout(() => {
       count.textContent = `${(score = 0)}`;
       checkWordBtn.disabled = false;
@@ -150,6 +165,7 @@ function failedAnswer() {
       message.style.display = "none";
       userInputGuess.disabled = false;
       userInputGuess.style.borderColor = "gray";
+            instructionBtn.style.display = 'block'
       randomWords();
     }, 4000);
   }
@@ -171,7 +187,7 @@ checkWordBtn.addEventListener("click", () => {
     userInputGuess.style.borderColor = "green";
     checkWordBtn.disabled = true;
     checkWordBtn.style.cursor = "not-allowed";
-
+instructionBtn.style.display = 'none'
     setTimeout(() => {
       message.style.display = "none";
       count.textContent = `${(score = 0)}`;
@@ -179,6 +195,7 @@ checkWordBtn.addEventListener("click", () => {
       userInputGuess.value = "";
       checkWordBtn.disabled = false;
       checkWordBtn.style.cursor = "pointer";
+      instructionBtn.style.display = 'block'
       randomWords();
     }, 3000);
   } else {
@@ -194,13 +211,16 @@ document.addEventListener("keydown", (event) => {
 });
 
 const cancelBtn = document.getElementById("cancel")!;
-const instruction = document.getElementById("instructionContainer")!;
+const instructionContainer = document.getElementById("instructionContainer")!;
+const instructionText = document.getElementById('instructionText')!
 const infoDisplay = document.getElementById("displayInfo")!;
-infoDisplay.onclick = () => {
-  instruction.style.display = "block";
+
+instructionBtn.onclick = () => {
+  instructionContainer.style.display = "block";
 };
+
 cancelBtn.onclick = () => {
-  instruction.style.display = "none";
+  instructionContainer.style.display = "none";
 };
 
 window.onclick = (event) => {
@@ -208,8 +228,8 @@ window.onclick = (event) => {
   if (
     event.target !== cancelBtn &&
     event.target !== infoDisplay &&
-    !instruction.contains(event.target as Node) // Ensure clicks inside the instruction container are ignored
+    !instructionText.contains(event.target as Node) // Ensure clicks inside the instruction container are ignored
   ) {
-    instruction.style.display = "none"; // Hide the instruction container
+    instructionContainer.style.display = "none"; // Hide the instruction container
   }
 };
