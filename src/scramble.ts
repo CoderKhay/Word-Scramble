@@ -213,8 +213,8 @@ const instructionBtn = document.getElementById("instructionBtn");
 const instructionContainer = document.getElementById(
   "instructionContainer",
 ) as HTMLDivElement | null;
-const instructionText = document.getElementById("instructionText");
 const infoDisplay = document.getElementById("displayInfo");
+
 const showInstruction = () => {
   if (!instructionContainer) return;
   instructionContainer.classList.remove("hidden");
