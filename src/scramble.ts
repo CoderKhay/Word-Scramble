@@ -50,7 +50,6 @@ randomBtn.onclick = () => {
 let message = document.getElementById("message")!;
 let count = document.getElementById("timesTried")!;
 let score = 0;
-// removed unused container element reference to avoid potential null refs
 
 function failedAnswer() {
   let currentCount = 5;
