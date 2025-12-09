@@ -71,13 +71,16 @@ var words = [
         word: "Abound",
         tip: "To be available in multitude",
     },
+    {
+        word: "",
+        tip: "",
+    },
 ];
 var randomDisplay = document.getElementById("randomDisplay");
 var randomBtn = document.getElementById("randomBtn");
 var tipDiv = document.getElementById("tips");
 var userInputGuess = document.getElementById("userGuess");
 var checkWordBtn = document.getElementById("checkBtn");
-var instructionBtn = document.getElementById("instructionBtn");
 var actualWord;
 var randomWords = function () {
     var _a;
@@ -112,7 +115,6 @@ randomBtn.onclick = function () {
 };
 var message = document.getElementById("message");
 var count = document.getElementById("timesTried");
-var guessedWord = document.getElementById("userGuess");
 var score = 0;
 // removed unused container element reference to avoid potential null refs
 function failedAnswer() {
@@ -126,6 +128,8 @@ function failedAnswer() {
         checkWordBtn.style.cursor = "not-allowed";
         checkWordBtn.style.opacity = "".concat(opacityValue);
         userInputGuess.style.borderColor = "red";
+        if (instructionBtn)
+            instructionBtn.style.display = "none";
         setTimeout(function () {
             count.textContent = "".concat((score += 1));
             checkWordBtn.disabled = false;
@@ -134,6 +138,8 @@ function failedAnswer() {
             message.style.display = "none";
             userInputGuess.disabled = false;
             checkWordBtn.style.opacity = "".concat((opacityValue = 1));
+            if (instructionBtn)
+                instructionBtn.style.display = "block";
             userInputGuess.style.borderColor = "gray";
         }, 2000);
     }
@@ -141,6 +147,8 @@ function failedAnswer() {
         message.style.display = "block";
         message.innerText = "Sorry champ!\uD83D\uDE14 the answer is actually ".concat(actualWord);
         checkWordBtn.disabled = true;
+        if (instructionBtn)
+            instructionBtn.style.display = "none";
         setTimeout(function () {
             count.textContent = "".concat((score = 0));
             checkWordBtn.disabled = false;
@@ -148,6 +156,8 @@ function failedAnswer() {
             message.style.display = "none";
             userInputGuess.disabled = false;
             userInputGuess.style.borderColor = "gray";
+            if (instructionBtn)
+                instructionBtn.style.display = "block";
             randomWords();
         }, 4000);
     }
@@ -165,6 +175,8 @@ checkWordBtn.addEventListener("click", function () {
         userInputGuess.style.borderColor = "green";
         checkWordBtn.disabled = true;
         checkWordBtn.style.cursor = "not-allowed";
+        if (instructionBtn)
+            instructionBtn.style.display = "none";
         setTimeout(function () {
             message.style.display = "none";
             count.textContent = "".concat((score = 0));
@@ -172,6 +184,8 @@ checkWordBtn.addEventListener("click", function () {
             userInputGuess.value = "";
             checkWordBtn.disabled = false;
             checkWordBtn.style.cursor = "pointer";
+            if (instructionBtn)
+                instructionBtn.style.display = "block";
             randomWords();
         }, 3000);
     }
@@ -185,21 +199,35 @@ document.addEventListener("keydown", function (event) {
         checkWordBtn.click(); // Simulate a button click
     }
 });
+// Instruction / overlay controls
 var cancelBtn = document.getElementById("cancel");
-var instruction = document.getElementById("instructionContainer");
+var instructionBtn = document.getElementById("instructionBtn");
+var instructionContainer = document.getElementById("instructionContainer");
 var infoDisplay = document.getElementById("displayInfo");
-instructionBtn.onclick = function () {
-    instruction.style.display = "block";
+var showInstruction = function () {
+    if (!instructionContainer)
+        return;
+    instructionContainer.classList.remove("hidden");
+    instructionContainer.classList.add("flex");
 };
-cancelBtn.onclick = function () {
-    instruction.style.display = "none";
+var hideInstruction = function () {
+    if (!instructionContainer)
+        return;
+    instructionContainer.classList.remove("flex");
+    instructionContainer.classList.add("hidden");
 };
-window.onclick = function (event) {
-    // Check if the clicked element is NOT cancelBtn or infoDisplay
-    if (event.target !== cancelBtn &&
-        event.target !== infoDisplay &&
-        !instruction.contains(event.target) // Ensure clicks inside the instruction container are ignored
-    ) {
-        instruction.style.display = "none"; // Hide the instruction container
-    }
-};
+if (instructionBtn)
+    instructionBtn.addEventListener("click", showInstruction);
+if (infoDisplay)
+    infoDisplay.addEventListener("click", showInstruction); // keep backward compatibility with older builds
+if (cancelBtn)
+    cancelBtn.addEventListener("click", hideInstruction);
+// Close overlay when clicking the backdrop itself (but ignore clicks inside the content pane)
+window.addEventListener("click", function (event) {
+    if (!instructionContainer ||
+        instructionContainer.classList.contains("hidden"))
+        return;
+    // If the user clicked the overlay element (backdrop) itself, close it
+    if (event.target === instructionContainer)
+        hideInstruction();
+});

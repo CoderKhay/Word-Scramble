@@ -1,79 +1,9 @@
 declare const confetti: any;
 
-const words = [
-  {
-    word: "septuagenarian",
-    tip: "An individual in their seventies",
-  },
-  {
-    word: "concierge",
-    tip: "One who attends to the wishes of hotel guest",
-  },
-  {
-    word: "misconstrue",
-    tip: "To misunderstand something",
-  },
-  {
-    word: "flabbergast",
-    tip: "An awkward individual",
-  },
-  {
-    word: "flower",
-    tip: "Beauty in combination with pleasant smell",
-  },
-  {
-    word: "beauty",
-    tip: "Aesthetically pleasing",
-  },
-  {
-    word: "movie",
-    tip: "Enjoyed fiction 🍿",
-  },
-  {
-    word: "school",
-    tip: "A place no one loves but is forced to go 😭",
-  },
-  {
-    word: "adventure",
-    tip: "A desired journey ",
-  },
-  {
-    word: "photograph",
-    tip: "A captured moment in time",
-  },
-  {
-    word: "pulvurize",
-    tip: "Grounded to dust",
-  },
-  {
-    word: "adduce",
-    tip: "Citing evidence for a statement",
-  },
-  {
-    word: "alibi",
-    tip: "An excuse used to avoid responsibility",
-  },
-  {
-    word: "plethora",
-    tip: "Abundant amount of a thing",
-  },
-  {
-    word: "history",
-    tip: "Human legacy",
-  },
-  {
-    word: "continent",
-    tip: "An expansive land surrounded by water",
-  },
-  {
-    word: "Minatiue",
-    tip: "A minor detail",
-  },
-  {
-    word: "Abound",
-    tip: "To be available in multitude",
-  },
-];
+import { words as importedWords } from "./wordsArray.js";
+
+type WordItem = { word: string; tip: string };
+const words: WordItem[] = importedWords as unknown as WordItem[];
 
 const randomDisplay = document.getElementById("randomDisplay")!;
 const randomBtn = document.getElementById("randomBtn")!;
@@ -135,8 +65,8 @@ function failedAnswer() {
     checkWordBtn.disabled = true;
     checkWordBtn.style.cursor = "not-allowed";
     checkWordBtn.style.opacity = `${opacityValue}`;
-        userInputGuess.style.borderColor = "red";
-          if (instructionBtn) instructionBtn.style.display = 'none'
+    userInputGuess.style.borderColor = "red";
+    if (instructionBtn) instructionBtn.style.display = "none";
 
     setTimeout(() => {
       count.textContent = `${(score += 1)}`;
@@ -146,15 +76,15 @@ function failedAnswer() {
       message.style.display = "none";
       userInputGuess.disabled = false;
       checkWordBtn.style.opacity = `${(opacityValue = 1)}`;
-            if (instructionBtn) instructionBtn.style.display = 'block'
+      if (instructionBtn) instructionBtn.style.display = "block";
       userInputGuess.style.borderColor = "gray";
     }, 2000);
   } else {
     message.style.display = "block";
 
-        message.innerText = `Sorry champ!😔 the answer is actually ${actualWord}`;
-        checkWordBtn.disabled = true;
-          if (instructionBtn) instructionBtn.style.display = 'none'
+    message.innerText = `Sorry champ!😔 the answer is actually ${actualWord}`;
+    checkWordBtn.disabled = true;
+    if (instructionBtn) instructionBtn.style.display = "none";
     setTimeout(() => {
       count.textContent = `${(score = 0)}`;
       checkWordBtn.disabled = false;
@@ -162,7 +92,7 @@ function failedAnswer() {
       message.style.display = "none";
       userInputGuess.disabled = false;
       userInputGuess.style.borderColor = "gray";
-            if (instructionBtn) instructionBtn.style.display = 'block'
+      if (instructionBtn) instructionBtn.style.display = "block";
       randomWords();
     }, 4000);
   }
@@ -184,7 +114,7 @@ checkWordBtn.addEventListener("click", () => {
     userInputGuess.style.borderColor = "green";
     checkWordBtn.disabled = true;
     checkWordBtn.style.cursor = "not-allowed";
-if (instructionBtn) instructionBtn.style.display = 'none'
+    if (instructionBtn) instructionBtn.style.display = "none";
     setTimeout(() => {
       message.style.display = "none";
       count.textContent = `${(score = 0)}`;
@@ -192,7 +122,7 @@ if (instructionBtn) instructionBtn.style.display = 'none'
       userInputGuess.value = "";
       checkWordBtn.disabled = false;
       checkWordBtn.style.cursor = "pointer";
-      if (instructionBtn) instructionBtn.style.display = 'block'
+      if (instructionBtn) instructionBtn.style.display = "block";
       randomWords();
     }, 3000);
   } else {
@@ -234,7 +164,11 @@ if (cancelBtn) cancelBtn.addEventListener("click", hideInstruction);
 
 // Close overlay when clicking the backdrop itself (but ignore clicks inside the content pane)
 window.addEventListener("click", (event) => {
-  if (!instructionContainer || instructionContainer.classList.contains("hidden")) return;
+  if (
+    !instructionContainer ||
+    instructionContainer.classList.contains("hidden")
+  )
+    return;
 
   // If the user clicked the overlay element (backdrop) itself, close it
   if (event.target === instructionContainer) hideInstruction();
